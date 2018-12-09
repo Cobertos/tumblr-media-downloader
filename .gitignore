@@ -1,0 +1,6 @@
+#Ignore specific stuff
+*.lnk
+/build
+
+#Ignore npm stuff
+/node_modules
