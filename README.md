@@ -1,7 +1,3 @@
----
-permalink: /index.html
----
-
 # tumblr-media-downloader
 
 An npm script that will go through your blog posts or like posts using an API key and download:
