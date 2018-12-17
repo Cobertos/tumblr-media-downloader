@@ -111,3 +111,12 @@ a {
     }
   }
 }
+
+.links {
+  li, p, a {
+    padding: 0;
+  }
+  li {
+    font-size: 0.6em;
+  }
+}

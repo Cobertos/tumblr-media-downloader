@@ -37,6 +37,8 @@ async function saveURLToDisk(url, prefix) {
     });
 }
 
+
+
 async function doIt() {
     let urlIndex = startOffset;
     for await (let url of getMediaURLs(tumblrURL, apiKey, endPoint, startOffset)) {

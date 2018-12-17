@@ -76,3 +76,9 @@ a {
     align-items: center;
     font-size: 30px;
     margin: 30px; }
+
+.links li, .links p, .links a {
+  padding: 0; }
+
+.links li {
+  font-size: 0.6em; }

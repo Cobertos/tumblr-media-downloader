@@ -43,48 +43,66 @@ Vue.component("media-downloader-form", {
 Vue.component("media-downloader-results", {
     template:`
 <ul class="links">
-    <li v-for="result in results">
-        <a :href="result.url" target="_blank" :download="result.filename">{{result.url}}</a>
+    <li v-for="line in lines">
+        <a v-if="line.url" :href="line.url" target="_blank" :download="line.filename">{{line.url}}</a>
+        <p v-if="line.text" :style="line.style">{{line.text}}</p>
     </li>
 </ul>
     `,
     data(){
         return {
-            results : []
+            lines : []
         };
     },
     mounted() {
+        const oldLog = console.log;
+        console.log = (...objs)=>{
+            oldLog(...objs);
+            let text = objs.map((o)=>""+o).join(",");
+            if(text.slice(0,5) === "Found") {
+                return;
+            }
+            this.lines.push({ text, style: { color: "#000" } });
+        };
+
         window.addEventListener('download-media', async (e)=>{
             const { gen, offset, autodl } = e;
             let index = 0 + offset;
-            for await ( let url of gen ) {
-                let imgName = url.split('/').pop().split('#')[0].split('?')[0];
-                let filename = index + "_" + imgName;
-                let id = `_${index}`;
 
-                if(autodl) {
-                    let response = await fetch(url, {
-                        headers: new Headers({
-                            'Origin': location.origin
-                        }),
-                        mode: 'cors'
-                    });
-                    let blob = await response.blob();
-                    let blobURL = window.URL.createObjectURL(blob);
-                    let a = document.createElement("a");
-                    a.href = blobURL;
-                    a.download = filename;
-                    a.click();
+            try {
+                for await ( let url of gen ) {
+                    let imgName = url.split('/').pop().split('#')[0].split('?')[0];
+                    let filename = index + "_" + imgName;
+                    let id = `_${index}`;
 
-                    await new Promise((resolve)=>{
-                        //Wait a little bit
-                        setTimeout(resolve, 1000);
+                    if(autodl) {
+                        let response = await fetch(url, {
+                            headers: new Headers({
+                                'Origin': location.origin
+                            }),
+                            mode: 'cors'
+                        });
+                        let blob = await response.blob();
+                        let blobURL = window.URL.createObjectURL(blob);
+                        let a = document.createElement("a");
+                        a.href = blobURL;
+                        a.download = filename;
+                        a.click();
+
+                        await new Promise((resolve)=>{
+                            //Wait a little bit
+                            setTimeout(resolve, 1000);
+                        });
+                    }
+                    this.lines.push({
+                        url, filename, id
                     });
+                    index++;
                 }
-                this.results.push({
-                    url, filename, id
-                });
-                index++;
+            }
+            catch(e){
+                let text = `FATAL ERROR: ${e} ${e.stack}`;
+                this.lines.push({ text, style: { "font-weight": "bold", color: "#F00" } });
             }
         }, false);
     }

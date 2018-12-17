@@ -3230,7 +3230,7 @@ function getMediaURLsFromPost(post) {
           }
 
           console.warn("Video did not have video_url ".concat(url));
-          return _context2.delegateYield([], "t0", 6);
+          return _context2.abrupt("return");
 
         case 6:
           dl.push(post.video_url);
@@ -3249,7 +3249,7 @@ function getMediaURLsFromPost(post) {
           }
 
           console.warn("Photo post had no photos ".concat(url));
-          return _context2.delegateYield([], "t1", 13);
+          return _context2.abrupt("return");
 
         case 13:
           post.photos.forEach(function (p) {
@@ -3265,7 +3265,7 @@ function getMediaURLsFromPost(post) {
           }
 
           console.warn("Unhandled post type ".concat(post.type, " has no .body to parse ").concat(url));
-          return _context2.delegateYield([], "t2", 19);
+          return _context2.abrupt("return");
 
         case 19:
           doc = new DOMParser().parseFromString(post.body, "text/html");
@@ -3285,7 +3285,7 @@ function getMediaURLsFromPost(post) {
 
         case 22:
           console.log("Found urls: ", dl);
-          return _context2.delegateYield(dl, "t3", 24);
+          return _context2.delegateYield(dl, "t0", 24);
 
         case 24:
         case "end":
@@ -3331,27 +3331,26 @@ function _getMediaURLs() {
           case 3:
             if (false) {}
 
-            _context3.prev = 4;
             _iteratorNormalCompletion = true;
             _didIteratorError = false;
-            _context3.prev = 7;
+            _context3.prev = 6;
             _iterator = _babel_runtime_helpers_asyncIterator__WEBPACK_IMPORTED_MODULE_4___default()(getPageOfPosts(tumblrURL, apiKey, endpoint, currOffset, limit));
 
-          case 9:
-            _context3.next = 11;
+          case 8:
+            _context3.next = 10;
             return _babel_runtime_helpers_awaitAsyncGenerator__WEBPACK_IMPORTED_MODULE_3___default()(_iterator.next());
 
-          case 11:
+          case 10:
             _step = _context3.sent;
             _iteratorNormalCompletion = _step.done;
-            _context3.next = 15;
+            _context3.next = 14;
             return _babel_runtime_helpers_awaitAsyncGenerator__WEBPACK_IMPORTED_MODULE_3___default()(_step.value);
 
-          case 15:
+          case 14:
             _value = _context3.sent;
 
             if (_iteratorNormalCompletion) {
-              _context3.next = 47;
+              _context3.next = 46;
               break;
             }
 
@@ -3359,122 +3358,112 @@ function _getMediaURLs() {
             _iteratorNormalCompletion2 = true;
             _didIteratorError2 = false;
             _iteratorError2 = undefined;
-            _context3.prev = 21;
+            _context3.prev = 20;
             _iterator2 = getMediaURLsFromPost(post)[Symbol.iterator]();
 
-          case 23:
+          case 22:
             if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
-              _context3.next = 30;
+              _context3.next = 29;
               break;
             }
 
             url = _step2.value;
-            _context3.next = 27;
+            _context3.next = 26;
             return url;
 
-          case 27:
+          case 26:
             _iteratorNormalCompletion2 = true;
-            _context3.next = 23;
+            _context3.next = 22;
             break;
 
-          case 30:
-            _context3.next = 36;
+          case 29:
+            _context3.next = 35;
             break;
 
-          case 32:
-            _context3.prev = 32;
-            _context3.t0 = _context3["catch"](21);
+          case 31:
+            _context3.prev = 31;
+            _context3.t0 = _context3["catch"](20);
             _didIteratorError2 = true;
             _iteratorError2 = _context3.t0;
 
-          case 36:
+          case 35:
+            _context3.prev = 35;
             _context3.prev = 36;
-            _context3.prev = 37;
 
             if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
               _iterator2.return();
             }
 
-          case 39:
-            _context3.prev = 39;
+          case 38:
+            _context3.prev = 38;
 
             if (!_didIteratorError2) {
-              _context3.next = 42;
+              _context3.next = 41;
               break;
             }
 
             throw _iteratorError2;
 
+          case 41:
+            return _context3.finish(38);
+
           case 42:
-            return _context3.finish(39);
+            return _context3.finish(35);
 
           case 43:
-            return _context3.finish(36);
-
-          case 44:
             _iteratorNormalCompletion = true;
-            _context3.next = 9;
+            _context3.next = 8;
             break;
 
-          case 47:
-            _context3.next = 53;
+          case 46:
+            _context3.next = 52;
             break;
 
-          case 49:
-            _context3.prev = 49;
-            _context3.t1 = _context3["catch"](7);
+          case 48:
+            _context3.prev = 48;
+            _context3.t1 = _context3["catch"](6);
             _didIteratorError = true;
             _iteratorError = _context3.t1;
 
-          case 53:
+          case 52:
+            _context3.prev = 52;
             _context3.prev = 53;
-            _context3.prev = 54;
 
             if (!(!_iteratorNormalCompletion && _iterator.return != null)) {
-              _context3.next = 58;
+              _context3.next = 57;
               break;
             }
 
-            _context3.next = 58;
+            _context3.next = 57;
             return _babel_runtime_helpers_awaitAsyncGenerator__WEBPACK_IMPORTED_MODULE_3___default()(_iterator.return());
 
-          case 58:
-            _context3.prev = 58;
+          case 57:
+            _context3.prev = 57;
 
             if (!_didIteratorError) {
-              _context3.next = 61;
+              _context3.next = 60;
               break;
             }
 
             throw _iteratorError;
 
+          case 60:
+            return _context3.finish(57);
+
           case 61:
-            return _context3.finish(58);
+            return _context3.finish(52);
 
           case 62:
-            return _context3.finish(53);
-
-          case 63:
             currOffset += limit;
-            _context3.next = 70;
-            break;
-
-          case 66:
-            _context3.prev = 66;
-            _context3.t2 = _context3["catch"](4);
-            console.warn("HTTP request error, maybe we're done, or limited?", _context3.t2);
-            return _context3.abrupt("break", 72);
-
-          case 70:
             _context3.next = 3;
             break;
 
-          case 72:
+          case 65:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee2, this, [[4, 66], [7, 49, 53, 63], [21, 32, 36, 44], [37,, 39, 43], [54,, 58, 62]]);
+    }, _callee2, this, [[6, 48, 52, 62], [20, 31, 35, 43], [36,, 38, 42], [53,, 57, 61]]);
   }));
   return _getMediaURLs.apply(this, arguments);
 }
@@ -3530,14 +3519,38 @@ Vue.component("media-downloader-form", {
   }
 });
 Vue.component("media-downloader-results", {
-  template: "\n<ul class=\"links\">\n    <li v-for=\"result in results\">\n        <a :href=\"result.url\" target=\"_blank\" :download=\"result.filename\">{{result.url}}</a>\n    </li>\n</ul>\n    ",
+  template: "\n<ul class=\"links\">\n    <li v-for=\"line in lines\">\n        <a v-if=\"line.url\" :href=\"line.url\" target=\"_blank\" :download=\"line.filename\">{{line.url}}</a>\n        <p v-if=\"line.text\" :style=\"line.style\">{{line.text}}</p>\n    </li>\n</ul>\n    ",
   data: function data() {
     return {
-      results: []
+      lines: []
     };
   },
   mounted: function mounted() {
     var _this = this;
+
+    var oldLog = console.log;
+
+    console.log = function () {
+      for (var _len = arguments.length, objs = new Array(_len), _key = 0; _key < _len; _key++) {
+        objs[_key] = arguments[_key];
+      }
+
+      oldLog.apply(void 0, objs);
+      var text = objs.map(function (o) {
+        return "" + o;
+      }).join(",");
+
+      if (text.slice(0, 5) === "Found") {
+        return;
+      }
+
+      _this.lines.push({
+        text: text,
+        style: {
+          color: "#000"
+        }
+      });
+    };
 
     window.addEventListener('download-media',
     /*#__PURE__*/
@@ -3545,7 +3558,7 @@ Vue.component("media-downloader-results", {
       var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
-        var gen, offset, autodl, index, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, _value, url, imgName, filename, id, response, blob, blobURL, a;
+        var gen, offset, autodl, index, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, _value, url, imgName, filename, id, response, blob, blobURL, a, text;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -3553,26 +3566,27 @@ Vue.component("media-downloader-results", {
               case 0:
                 gen = e.gen, offset = e.offset, autodl = e.autodl;
                 index = 0 + offset;
+                _context.prev = 2;
                 _iteratorNormalCompletion = true;
                 _didIteratorError = false;
-                _context.prev = 4;
+                _context.prev = 5;
                 _iterator = _babel_runtime_helpers_asyncIterator__WEBPACK_IMPORTED_MODULE_2___default()(gen);
 
-              case 6:
-                _context.next = 8;
+              case 7:
+                _context.next = 9;
                 return _iterator.next();
 
-              case 8:
+              case 9:
                 _step = _context.sent;
                 _iteratorNormalCompletion = _step.done;
-                _context.next = 12;
+                _context.next = 13;
                 return _step.value;
 
-              case 12:
+              case 13:
                 _value = _context.sent;
 
                 if (_iteratorNormalCompletion) {
-                  _context.next = 37;
+                  _context.next = 38;
                   break;
                 }
 
@@ -3582,11 +3596,11 @@ Vue.component("media-downloader-results", {
                 id = "_".concat(index);
 
                 if (!autodl) {
-                  _context.next = 32;
+                  _context.next = 33;
                   break;
                 }
 
-                _context.next = 21;
+                _context.next = 22;
                 return fetch(url, {
                   headers: new Headers({
                     'Origin': location.origin
@@ -3594,26 +3608,26 @@ Vue.component("media-downloader-results", {
                   mode: 'cors'
                 });
 
-              case 21:
+              case 22:
                 response = _context.sent;
-                _context.next = 24;
+                _context.next = 25;
                 return response.blob();
 
-              case 24:
+              case 25:
                 blob = _context.sent;
                 blobURL = window.URL.createObjectURL(blob);
                 a = document.createElement("a");
                 a.href = blobURL;
                 a.download = filename;
                 a.click();
-                _context.next = 32;
+                _context.next = 33;
                 return new Promise(function (resolve) {
                   //Wait a little bit
                   setTimeout(resolve, 1000);
                 });
 
-              case 32:
-                _this.results.push({
+              case 33:
+                _this.lines.push({
                   url: url,
                   filename: filename,
                   id: id
@@ -3621,55 +3635,72 @@ Vue.component("media-downloader-results", {
 
                 index++;
 
-              case 34:
+              case 35:
                 _iteratorNormalCompletion = true;
-                _context.next = 6;
+                _context.next = 7;
                 break;
 
-              case 37:
-                _context.next = 43;
+              case 38:
+                _context.next = 44;
                 break;
 
-              case 39:
-                _context.prev = 39;
-                _context.t0 = _context["catch"](4);
+              case 40:
+                _context.prev = 40;
+                _context.t0 = _context["catch"](5);
                 _didIteratorError = true;
                 _iteratorError = _context.t0;
 
-              case 43:
-                _context.prev = 43;
+              case 44:
                 _context.prev = 44;
+                _context.prev = 45;
 
                 if (!(!_iteratorNormalCompletion && _iterator.return != null)) {
-                  _context.next = 48;
+                  _context.next = 49;
                   break;
                 }
 
-                _context.next = 48;
+                _context.next = 49;
                 return _iterator.return();
 
-              case 48:
-                _context.prev = 48;
+              case 49:
+                _context.prev = 49;
 
                 if (!_didIteratorError) {
-                  _context.next = 51;
+                  _context.next = 52;
                   break;
                 }
 
                 throw _iteratorError;
 
-              case 51:
-                return _context.finish(48);
-
               case 52:
-                return _context.finish(43);
+                return _context.finish(49);
 
               case 53:
+                return _context.finish(44);
+
+              case 54:
+                _context.next = 60;
+                break;
+
+              case 56:
+                _context.prev = 56;
+                _context.t1 = _context["catch"](2);
+                text = "FATAL ERROR: ".concat(_context.t1, " ").concat(_context.t1.stack);
+
+                _this.lines.push({
+                  text: text,
+                  style: {
+                    "font-weight": "bold",
+                    color: "#F00"
+                  }
+                });
+
+              case 60:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[4, 39, 43, 53], [44,, 48, 52]]);
+        }, _callee, this, [[2, 56], [5, 40, 44, 54], [45,, 49, 53]]);
       }));
 
       return function (_x) {

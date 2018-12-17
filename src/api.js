@@ -37,21 +37,21 @@ export function* getMediaURLsFromPost(post) {
     if(post.type === "video") {
         if(!post.video_url) {
             console.warn(`Video did not have video_url ${url}`);
-            yield* [];
+            return;
         }
         dl.push(post.video_url);
     }
     else if(post.type === "photo"){
         if(!post.photos) {
             console.warn(`Photo post had no photos ${url}`);
-            yield* [];
+            return;
         }
         post.photos.forEach((p)=>dl.push(p.original_size.url));
     }
     else {
         if(!post.body) {
             console.warn(`Unhandled post type ${post.type} has no .body to parse ${url}`);
-            yield* [];
+            return;
         }
         let doc = new DOMParser().parseFromString(post.body, "text/html");
         doc.querySelectorAll("img, video, video > source")
@@ -74,17 +74,11 @@ export async function* getMediaURLs(tumblrURL, apiKey, endpoint, startOffset=0, 
     let currOffset = startOffset;
 
     while(true) {
-        try {
-            for await (let post of getPageOfPosts(tumblrURL, apiKey, endpoint, currOffset, limit)) {
-                for(let url of getMediaURLsFromPost(post)) {
-                    yield url;
-                }
+        for await (let post of getPageOfPosts(tumblrURL, apiKey, endpoint, currOffset, limit)) {
+            for(let url of getMediaURLsFromPost(post)) {
+                yield url;
             }
-            currOffset += limit;
         }
-        catch(e) {
-            console.warn(`HTTP request error, maybe we're done, or limited?`, e);
-            break;
-        }
+        currOffset += limit;
     }
 }
