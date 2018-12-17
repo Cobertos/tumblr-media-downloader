@@ -3197,7 +3197,7 @@ function _getPageOfPosts() {
 
           case 7:
             resp = _context.sent;
-            posts = resp.data.response.posts;
+            posts = resp.data.response[endpoint === "likes" ? "liked_posts" : "posts"];
             return _context.delegateYield(_babel_runtime_helpers_asyncGeneratorDelegate__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_asyncIterator__WEBPACK_IMPORTED_MODULE_4___default()(posts), _babel_runtime_helpers_awaitAsyncGenerator__WEBPACK_IMPORTED_MODULE_3___default.a), "t0", 10);
 
           case 10:

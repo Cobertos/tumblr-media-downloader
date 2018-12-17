@@ -26,7 +26,7 @@ export async function* getPageOfPosts(tumblrURL, apiKey, endpoint="posts", offse
     const url = `https://api.tumblr.com/v2/blog/${tumblrURL}/${endpoint}?api_key=${apiKey}&offset=${offset}&limit=${limit}`;
     console.log(`=== Getting ${limit} ${endpoint} posts at offset ${offset} ===`);
     const resp = await axios.get(url);
-    const posts = resp.data.response.posts;
+    const posts = resp.data.response[endpoint === "likes" ? "liked_posts" : "posts"];
     yield* posts;
 }
 
