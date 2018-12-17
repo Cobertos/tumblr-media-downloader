@@ -1,0 +1,75 @@
+html, body {
+  background-color: #ddf0ff;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2.5vw;
+  padding: 0;
+  margin: 0; }
+  @media only screen and (min-width: 768px) {
+    html, body {
+      font-size: 16px; } }
+
+input {
+  padding: 5px; }
+
+h2 {
+  padding-top: 0; }
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 140vh;
+  min-height: 800px;
+  background: linear-gradient(-5deg, #ddf0ff 5%, #a4c1fc 25%, #1c7eb2 55%, #164D77 87%, #261f07 120%); }
+
+.fg {
+  position: relative;
+  z-index: 2; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'PT Sans', sans-serif; }
+  .header > * {
+    margin: 20px;
+    text-shadow: 1px 1px 2px black; }
+  .header a {
+    color: #FFF; }
+
+.methods > h2 {
+  font-family: 'PT Sans', sans-serif;
+  text-align: center; }
+
+.methods .two-methods {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  @media only screen and (min-width: 768px) {
+    .methods .two-methods {
+      align-items: stretch;
+      flex-direction: row; } }
+  .methods .two-methods .method {
+    background: linear-gradient(0deg, rgba(10, 40, 70, 0.1) 5%, rgba(15, 10, 6, 0.1) 120%);
+    padding: 20px;
+    border: 1px solid transparent; }
+    .methods .two-methods .method h2 {
+      margin-top: 0;
+      text-decoration: underline; }
+    @media only screen and (min-width: 768px) {
+      .methods .two-methods .method {
+        width: 40%;
+        max-width: 300px; } }
+    .methods .two-methods .method:hover {
+      background: linear-gradient(0deg, rgba(10, 40, 70, 0.3) 5%, rgba(15, 10, 6, 0.3) 120%);
+      border: 1px solid rgba(15, 10, 6, 0.3); }
+  .methods .two-methods .or {
+    font-family: 'PT Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    margin: 30px; }

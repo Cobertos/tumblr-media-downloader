@@ -1,8 +1,26 @@
 const axios = require("axios");
-const { DOMParser } = new (require("jsdom").JSDOM)().window;
-    /*(typeof window === "undefined" ? 
-    new (__non_webpack_require__("jsdom").JSDOM)().window :
-    window);*/
+const { DOMParser } = (typeof window === "undefined" ? 
+    new (eval("require")("jsdom").JSDOM)().window :
+    window);
+
+export async function getInfo(tumblrURL, apiKey) {
+    /*
+            "ask": true,
+            "ask_anon": true,
+            "ask_page_title": "Ask me anything",
+            "can_subscribe": false,
+            "description": "",
+            "is_nsfw": true,
+            "likes": ###,
+            "name": "xxx",
+            "posts": ###,
+    */
+    const url = `https://api.tumblr.com/v2/blog/${tumblrURL}/info?api_key=${apiKey}`;
+    console.log(`=== Getting info ===`);
+    const resp = await axios.get(url);
+    const info = resp.data.response.blog;
+    return info;
+}
 
 export async function* getPageOfPosts(tumblrURL, apiKey, endpoint="posts", offset=0, limit=20) {
     const url = `https://api.tumblr.com/v2/blog/${tumblrURL}/${endpoint}?api_key=${apiKey}&offset=${offset}&limit=${limit}`;

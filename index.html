@@ -3,61 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans" rel="stylesheet">  
+  <link rel="stylesheet" type="text/css" href="dist/css/main.css">
   <title>Tumblr Media Downloader</title>
-  <script src="js/main.js"></script>
-  <style type="text/css">
-    html {
-      background: linear-gradient(-179deg, #ddf0ff 5%, #a4c1fc 25%, #1c7eb2 55%,#164D77 87%,#261f07 120%);
-      min-height: 100%;
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .header > * {
-      margin: 20px;
-    }
-
-    .two-methods {
-      display: flex;
-      justify-content: space-around;
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="dist/js/main.js"></script>
 </head>
 <body>
-  <div class="header">
-    <h1>Tumblr Media Downloader</h1>
-    <div>
-      <a href="https://twitter.com/cobertos">@cobertos</a>
-      <a href="https://cobertos.com">cobertos.com</a>
+  <div id="app">
+    <div class="bg"></div>
+    <div class="fg">
+      <div class="header">
+        <h1>TUMBLR MEDIA DOWNLOADER</h1>
+        <div>
+          <a href="https://twitter.com/cobertos">@cobertos</a>
+          <a href="https://cobertos.com">cobertos.com</a>
+        </div>
+      </div>
+      <div class="methods">
+        <div class="two-methods">
+          <div class="method">
+            <h2>DOWNLOAD NOW</h2>
+            <media-downloader-form />
+          </div>
+          <div class="or">
+            OR
+          </div>
+          <div class="method">
+            <h2>RUN LOCALLY</h2>
+            <ol>
+              <li>Clone <a href="">the repository</a></li>
+              <li>`npm install`</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <media-downloader-results />
     </div>
   </div>
-  <div class="methods">
-    <h2>Ways to use:</h2>
-    <div class="two-methods">
-      <div>
-        <h2>1. Download now: </h2>
-        <input type="text" placeholder="your-blog.tumblr.com">
-        <input type="text" placeholder="Api Key">
-        <input type="text" placeholder="Offset">
-        <input type="checkbox"><label>Blog Posts</label>
-        <input type="checkbox"><label>Likes</label>
-        <button>Lel</button>
-      </div>
-      <div>
-        <h2>2. Run the Node.js</h2>
-        <ol>
-          <li>Clone <a href="">the repository</a></li>
-          <li>`npm install`</li>
-        </ol>
-      </div>
-    </div>
-  </div>
-  <ul class="links">
-    <li>Linko</li>
-  </ul>
 </body>
 </html>

@@ -5,7 +5,7 @@ const Stream = require('stream').Transform;
 const { http, https } = require('follow-redirects'); //Needed to follow 302's for files
 const { getMediaURLs } = requireES6("./src/api.js");
 
-const tumblrURL = "hardhotletsfrot.tumblr.com";
+const tumblrURL = "staff.tumblr.com";
 const apiKey = "KCndgrBCIxZM831OyEd7yIoL0uKZBJCqvCwSMYVGBcKDlPIMGn";
 const startOffset = Number.parseInt(process.argv[2]) || 0;
 const endPoint = process.argv[3] || "posts";
