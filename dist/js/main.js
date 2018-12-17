@@ -3494,7 +3494,7 @@ var _require = __webpack_require__(/*! ./api.js */ "./api.js"),
     getMediaURLs = _require.getMediaURLs;
 
 Vue.component("media-downloader-form", {
-  template: "\n<div>\n    <div><input type=\"text\" v-model=\"tumblrURL\" placeholder=\"your-blog.tumblr.com\"><label>Blog URL</label></div>\n    <div><input type=\"text\" v-model=\"apiKey\" placeholder=\"Api Key\"><label>API Key</label></div>\n    <div><input type=\"text\" v-model.number=\"offset\" placeholder=\"Offset\"><label>Start Post Number</label></div>\n    <div><input type=\"radio\" name=\"group\" value=\"posts\" v-model=\"endpoint\"><label>Blog Posts</label></div>\n    <div><input type=\"radio\" name=\"group\" value=\"likes\" v-model=\"endpoint\"><label>Likes</label></div>\n    <p v-if=\"endpoint === 'likes'\" style=\"color:#F00\">Likes must be public for this to work (or you get a HTTP 403)</p>\n    <div><input type=\"checkbox\" v-model=\"autodl\"><label>Automatic Download</label></div>\n    <p v-if=\"autodl && !isChrome\" style=\"color:#F00\">Auto download seems to only work in Chrome!</p>\n    <p v-if=\"autodl\">REALLY SLOW! Might fail on files > 50MB.</p>\n    <button @click=\"emit\">Download</button>\n</div>\n    ",
+  template: "\n<div>\n    <div><input type=\"text\" v-model=\"tumblrURL\" placeholder=\"your-blog.tumblr.com\"><label>Blog URL</label></div>\n    <div><input type=\"text\" v-model=\"apiKey\" placeholder=\"Api Key\"><label>API Key</label></div>\n    <div><input type=\"text\" v-model.number=\"offset\" placeholder=\"Offset\"><label>Start Post Number</label></div>\n    <div><input type=\"radio\" name=\"group\" value=\"posts\" v-model=\"endpoint\"><label>Blog Posts</label></div>\n    <div><input type=\"radio\" name=\"group\" value=\"likes\" v-model=\"endpoint\"><label>Likes</label></div>\n    <p v-if=\"endpoint === 'likes'\" style=\"color:#F00\">Likes must be public for this to work (or you get a HTTP 403)</p>\n    <div><input type=\"checkbox\" v-model=\"autodl\"><label>Automatic Download</label></div>\n    <p v-if=\"autodl && !isChrome\" style=\"color:#F00\">Auto download seems to only work in Chrome!</p>\n    <p v-if=\"autodl\">REALLY SLOW FOR VIDEOS! Might fail on files > 50MB.</p>\n    <button @click=\"emit\">Download</button>\n</div>\n    ",
   data: function data() {
     return {
       tumblrURL: "staff.tumblr.com",
@@ -3595,12 +3595,18 @@ Vue.component("media-downloader-results", {
                 filename = index + "_" + imgName;
                 id = "_".concat(index);
 
+                _this.lines.push({
+                  url: url,
+                  filename: filename,
+                  id: id
+                });
+
                 if (!autodl) {
-                  _context.next = 33;
+                  _context.next = 34;
                   break;
                 }
 
-                _context.next = 22;
+                _context.next = 23;
                 return fetch(url, {
                   headers: new Headers({
                     'Origin': location.origin
@@ -3608,31 +3614,25 @@ Vue.component("media-downloader-results", {
                   mode: 'cors'
                 });
 
-              case 22:
+              case 23:
                 response = _context.sent;
-                _context.next = 25;
+                _context.next = 26;
                 return response.blob();
 
-              case 25:
+              case 26:
                 blob = _context.sent;
                 blobURL = window.URL.createObjectURL(blob);
                 a = document.createElement("a");
                 a.href = blobURL;
                 a.download = filename;
                 a.click();
-                _context.next = 33;
+                _context.next = 34;
                 return new Promise(function (resolve) {
                   //Wait a little bit
                   setTimeout(resolve, 1000);
                 });
 
-              case 33:
-                _this.lines.push({
-                  url: url,
-                  filename: filename,
-                  id: id
-                });
-
+              case 34:
                 index++;
 
               case 35:

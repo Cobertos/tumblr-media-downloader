@@ -12,7 +12,7 @@ Vue.component("media-downloader-form", {
     <p v-if="endpoint === 'likes'" style="color:#F00">Likes must be public for this to work (or you get a HTTP 403)</p>
     <div><input type="checkbox" v-model="autodl"><label>Automatic Download</label></div>
     <p v-if="autodl && !isChrome" style="color:#F00">Auto download seems to only work in Chrome!</p>
-    <p v-if="autodl">REALLY SLOW! Might fail on files > 50MB.</p>
+    <p v-if="autodl">REALLY SLOW FOR VIDEOS! Might fail on files > 50MB.</p>
     <button @click="emit">Download</button>
 </div>
     `,
@@ -75,6 +75,9 @@ Vue.component("media-downloader-results", {
                     let filename = index + "_" + imgName;
                     let id = `_${index}`;
 
+                    this.lines.push({
+                        url, filename, id
+                    });
                     if(autodl) {
                         let response = await fetch(url, {
                             headers: new Headers({
@@ -94,9 +97,6 @@ Vue.component("media-downloader-results", {
                             setTimeout(resolve, 1000);
                         });
                     }
-                    this.lines.push({
-                        url, filename, id
-                    });
                     index++;
                 }
             }
