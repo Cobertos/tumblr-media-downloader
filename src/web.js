@@ -9,6 +9,7 @@ Vue.component("media-downloader-form", {
     <div><input type="text" v-model.number="offset" placeholder="Offset"><label>Start Post Number</label></div>
     <div><input type="radio" name="group" value="posts" v-model="endpoint"><label>Blog Posts</label></div>
     <div><input type="radio" name="group" value="likes" v-model="endpoint"><label>Likes</label></div>
+    <p v-if="endpoint === 'likes'" style="color:#F00">Likes must be public for this to work</p>
     <div><input type="checkbox" v-model="autodl"><label>Automatic Download</label></div>
     <p v-if="autodl && !isChrome" style="color:#F00">Auto download seems to only work in Chrome!</p>
     <p v-if="autodl">REALLY SLOW! Might fail on files > 50MB.</p>
