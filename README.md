@@ -10,5 +10,5 @@ An npm script that will go through your blog posts or like posts using an API ke
 
 * Clone the repository
 * `npm install`
-* Replace the API key and Tumblr URL with your api key and blog URL
-* `node dl.js [offset]` where offset is the first post to start at. Default is 0.
+* [Generate an API key here](https://www.tumblr.com/oauth/apps) by filling out this form and getting your key.
+* `node dl.js [offset] [saveFolder]` where `[offset]` is the first post to start at and `[saveFolder]` is the folder to save in. Default is 0.
