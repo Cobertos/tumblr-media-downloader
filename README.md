@@ -1,6 +1,6 @@
 # tumblr-media-downloader
 
-An npm script that will go through your blog posts or like posts using an API key and download:
+An npm script and website that will go through your blog posts or like posts and download:
 
 * Videos from `video` posts
 * Photos from `photo` posts
